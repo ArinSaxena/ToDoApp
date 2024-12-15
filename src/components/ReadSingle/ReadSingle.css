@@ -1,0 +1,80 @@
+.single-todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    width: 60vw;
+  }
+  
+  .single-todo .checkbox-btn input{
+    margin-right: 30px;
+    transform: scale(1.8);
+    border-radius: 50px;
+  }
+  
+  .single-todo .single-input-render {
+    flex-grow: 1;
+    font-size: 25px;
+  }
+  
+  .single-todo select {
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .single-todo select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .single-todo button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .single-todo button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .single-todo button:focus {
+    outline: none;
+  }
+  
+  .single-todo .radio-btn input {
+    transform: scale(1.2);
+  }
+  .left-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .drop-down select{
+    width: 90px;
+    font-size: larger;
+   
+  }
+  .right-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .delete-btn{
+    color: red;
+  }
+
+
+  
+  
+ 

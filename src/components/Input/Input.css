@@ -1,0 +1,8 @@
+.input-bar input{
+    width: 61vw;
+    height: 50px;
+    border-radius:5px;
+    font-size: x-large;
+    /* padding: px; */
+    padding-left: 20px;
+}
