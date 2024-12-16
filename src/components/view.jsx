@@ -7,15 +7,13 @@ const View = () => {
   // const {list} = useSelector((state) => state.task);
   const tasks = useSelector((state) => state.task.list);
 
-  // console.log(tasks);
-
-  // const [isChecked, setIsChecked] = useState(false);
+  console.log(tasks);
 
   return (
     <div className="read-container">
-          {tasks.map((task) => (
-            <ReadSingle task={task} key={task.id} />
-          ))}
+      {tasks.map((task) => (
+        <ReadSingle task={task} key={task.id} />
+      ))}
     </div>
   );
 };

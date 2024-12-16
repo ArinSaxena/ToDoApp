@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "utility/taskSlice";
 import "./Input.css";
-// import View from "./view";
 
 const Input = () => {
   const [inputTask, setInputTask] = useState({task:""});
@@ -12,14 +11,12 @@ const Input = () => {
 
   const setTask = (e) => {
     setInputTask({ ...inputTask, [e.target.name]: e.target.value });
-    console.log(inputTask);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addTask(inputTask.task));
     setInputTask({ task: "" });
-    console.log(inputTask);
   };
 
   return (

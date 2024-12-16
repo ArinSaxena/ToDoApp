@@ -1,19 +1,32 @@
 import React from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+import { markallcompleted, clearcompleted } from "utility/taskSlice";
 import "./Footer.css";
-const Footer = ({Checked}) => {
+
+const Footer = () => {
+  const dispatch = useDispatch();
+  const  tasks = useSelector((state) => state.task.list);
+
+  const unmarkedtodos = tasks.filter((list) => list.isChecked !== true);
+
+  const markcompleted = () => {
+    dispatch(markallcompleted());
+  };
+  const deleteCompletedTodo = () =>{
+    dispatch(clearcompleted());
+  }
+
   return (
     <div className="footer">
       <div>
         <h2>Actions</h2>
-        <button>Mark All Completed</button>
-        <button>Clear Completed</button>
+        <button onClick={markcompleted}>Mark All Completed</button>
+        <button onClick={deleteCompletedTodo}>Clear Completed</button>
       </div>
 
       <div>
-
         <h2>Remaining Todos</h2>
-        <h4>item left</h4>
+        <h4>{unmarkedtodos.length} item left</h4>
       </div>
 
       <div>
@@ -26,36 +39,34 @@ const Footer = ({Checked}) => {
       <div>
         <h2>Filter by Color</h2>
         <div>
-        <input type="checkbox" />
-        <button></button>
-        <p>Green</p>
+          <input type="checkbox" />
+          <button></button>
+          <p>Green</p>
         </div>
 
         <div>
-        <input type="checkbox" />
-        <button></button>
-        <p>Blue</p>
+          <input type="checkbox" />
+          <button></button>
+          <p>Blue</p>
         </div>
 
         <div>
-        <input type="checkbox" />
-        <button></button>
-        <p>Orange</p>
+          <input type="checkbox" />
+          <button></button>
+          <p>Orange</p>
         </div>
 
         <div>
-        <input type="checkbox" />
-        <button ></button>
-        <p>Purple</p>
+          <input type="checkbox" />
+          <button></button>
+          <p>Purple</p>
         </div>
 
         <div>
-        <input type="checkbox" />
-        <button></button>
-        <p>Red</p>
+          <input type="checkbox" />
+          <button></button>
+          <p>Red</p>
         </div>
-        
-       
       </div>
     </div>
   );

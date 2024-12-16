@@ -1,25 +1,29 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { deleteTask, updateTask } from "utility/taskSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTask, updateColor, updateCheckbox, updateTask } from "utility/taskSlice";
 import { useState } from "react";
 import "./ReadSingle.css";
-import Footer from "components/Footer/Footer";
 
 
 const ReadSingle = ({ task }) => {
   const dispatch = useDispatch();
 
-  const [selectedColor, setSelectedColor] = useState("");
-  const [isChecked, setIschecked] = useState(false);
+  // const tasks = useSelector((state) => state.task.list)
+
+  // const [selectedColor, setSelectedColor] = useState("");
+  // const [isChecked, setIschecked] = useState(false);
 
   const handleCheckbox = (e) => {
-    setIschecked(!isChecked);
-    dispatch(updateTask(isChecked))
+    // setIschecked((val) => !val);
+    dispatch(updateCheckbox({id:task.id, checked:e.target.checked}));
+    console.log(e.target.checked)
   };
+// console.log(isChecked);
   const handleColor = (e) => {
-    setSelectedColor(e.target.value);
-    // dispatch()
+    // setSelectedColor(e.target.value);
+    dispatch(updateColor({id:task.id,color:e.target.value}));
   };
+
 
   const handleDelete = () => {
     dispatch(deleteTask(task.id));
@@ -30,8 +34,8 @@ const ReadSingle = ({ task }) => {
         <div className="checkbox-btn">
           <input
             type="checkbox"
-            checked={isChecked}
-            onChange={handleCheckbox}
+            defaultChecked={task.isChecked}
+            onClick={handleCheckbox}
           />
         </div>
         <div className="single-input-render">{task.title}</div>
@@ -44,17 +48,17 @@ const ReadSingle = ({ task }) => {
             <option value="green" style={{ color: "green" }}>
               Green
             </option>
-            <option value="yellow" style={{ color: "orange" }}>
-              Blue
-            </option>
-            <option value="blue" style={{ color: "blue" }}>
+            <option value="orange" style={{ color: "orange" }}>
               Orange
             </option>
-            <option value="red" style={{ color: "red" }}>
-              Purple
+            <option value="blue" style={{ color: "blue" }}>
+              Blue
             </option>
-            <option value="brown" style={{ color: "purple" }}>
+            <option value="red" style={{ color: "red" }}>
               Red
+            </option>
+            <option value="purple" style={{ color: "purple" }}>
+              Purple
             </option>
           </select>
         </div>
