@@ -16,9 +16,7 @@ const ReadSingle = ({ task }) => {
   const handleCheckbox = (e) => {
     // setIschecked((val) => !val);
     dispatch(updateCheckbox({id:task.id, checked:e.target.checked}));
-    console.log(e.target.checked)
   };
-// console.log(isChecked);
   const handleColor = (e) => {
     // setSelectedColor(e.target.value);
     dispatch(updateColor({id:task.id,color:e.target.value}));
@@ -34,7 +32,7 @@ const ReadSingle = ({ task }) => {
         <div className="checkbox-btn">
           <input
             type="checkbox"
-            defaultChecked={task.isChecked}
+            checked={task.isChecked}
             onClick={handleCheckbox}
           />
         </div>

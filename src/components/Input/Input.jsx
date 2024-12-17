@@ -5,18 +5,20 @@ import { addTask } from "utility/taskSlice";
 import "./Input.css";
 
 const Input = () => {
-  const [inputTask, setInputTask] = useState({task:""});
+  const [inputTask, setInputTask] = useState("");
 
   const dispatch = useDispatch();
 
   const setTask = (e) => {
-    setInputTask({ ...inputTask, [e.target.name]: e.target.value });
+    setInputTask(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTask(inputTask.task));
-    setInputTask({ task: "" });
+    if (inputTask !== "") {
+      dispatch(addTask(inputTask));
+      setInputTask("");
+    }
   };
 
   return (
@@ -26,7 +28,7 @@ const Input = () => {
           type="text"
           name="task"
           placeholder="What needs to be done?"
-          value={inputTask.task}
+          value={inputTask}
           onChange={setTask}
         />
       </form>

@@ -6,11 +6,21 @@ import ReadSingle from "./ReadSingle/ReadSingle";
 const View = () => {
   // const {list} = useSelector((state) => state.task);
   const tasks = useSelector((state) => state.task.list);
+  const {status, color} = useSelector((state) => state.filter)
 
-  console.log(tasks);
+  
+
+  // console.log(tasks);
+
+  // const filteredTasks = tasks.filter((task) =>{
+  //   if(filter === "All") return true;
+  //   if(filter === "Active") return !task.isChecked ;
+  //   if(filter === "Completed") return task.isChecked ;
+
+  // })
 
   return (
-    <div className="read-container">
+    <div className="read-containaer">
       {tasks.map((task) => (
         <ReadSingle task={task} key={task.id} />
       ))}

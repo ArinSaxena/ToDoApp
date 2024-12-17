@@ -8,9 +8,9 @@ const taskSlice = createSlice({
   },
   reducers: {
     addTask: (state, action) => {
-      if (action.payload === "") {
-        return;
-      }
+      // if (action.payload === "") {
+      //   return;
+      // }
       state.list.push({
         id: state.list.length + 1,
         title: action.payload,
@@ -21,14 +21,14 @@ const taskSlice = createSlice({
 
     deleteTask: (state, action) => {
       const id = action.payload;
-      if (id) {
+      if (id) {  // not needed     first will not delete if if 0
         state.list = state.list.filter((ele) => ele.id !== id);
       }
     },
     updateColor: (state, action) => {
       const { id, color } = action.payload;
-      console.log(color);
-      if (color) {
+      // console.log(color);
+      if (color) { // empty string false  reset
         state.list = state.list.map((list) =>
           list.id == id ? { ...list, color } : list
         );
@@ -36,9 +36,9 @@ const taskSlice = createSlice({
     },
     updateCheckbox: (state, action) => {
       const { id, checked } = action.payload;
-      console.log(checked);
-      state.list = state.list.map((list) =>
-        list.id == id ? { ...list, isChecked: checked } : list
+      // console.log(checked);
+      state.list = state.list.map((task) =>  // naming list replaced by task here
+        task.id == id ? { ...task, isChecked: checked } : task
       );
     },
 
@@ -48,7 +48,7 @@ const taskSlice = createSlice({
           list.isChecked = true;
         }
         return list; // ternary
-        // or
+        // orcd
         // state.list.map((list) => {...list , checked:true})
       });
     },
@@ -57,7 +57,7 @@ const taskSlice = createSlice({
     },
   },
 });
-
+ 
 export const {
   addTask,
   deleteTask,
